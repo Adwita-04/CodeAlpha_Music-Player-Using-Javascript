@@ -1,0 +1,115 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Mozilla Headline", sans-serif;
+}
+:root{
+    --main-color:rgb(48, 137, 178);
+}
+body {
+  background-image: url("/assets/background\ image\ 4.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  font-family: sans-serif;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.504); /* semi-transparent black */
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.heading{
+    position: fixed;
+    height: 5rem;
+    background-color: black;
+    width: 100vw;
+    font-family: "Lobster";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+-webkit-text-stroke: 1px var(--main-color);
+ 
+}
+.heading h1:hover {
+    cursor: pointer;
+      color: #00ffff;
+      -webkit-text-stroke: 1px transparent;
+    }
+
+.container{
+   background: radial-gradient(circle, #0c4181 10%,#01294f,transparent 96%);
+    min-width: 400px;
+    min-height: 80vh;
+    color: aliceblue;
+    box-shadow: 0 0 15px 5px #f9f9fb45;
+    margin-top:100px;
+    padding: 15px;
+}
+.image-container{
+    margin: 20px;
+   box-shadow: 0 0 20px 5px #474760;
+}
+.image-container img{
+    width: 350px;
+}
+.progress-bar{
+    width: 90%;
+    margin-left: 15px;
+    height: 4px;
+}
+
+.audio-controls{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+    margin: 0.5rem auto;
+}
+.audio-controls i {
+    font-size: 1.3rem;
+    color: white;
+    cursor: pointer;
+}
+.song-playlist{
+   background: radial-gradient(circle,#01294f,transparent 6%);
+   text-align: center;
+   box-shadow: 0 0 20px 5px #474760c5;
+    height: 31vh;
+    overflow:scroll;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    scrollbar-width: 3px;
+    margin: 1rem;
+    margin-bottom: 0px;
+}
+.song-playlist h2{
+    margin: 10px;
+     -webkit-text-stroke: 1px var(--main-color);
+}
+.song-container{
+    margin: 6px;
+    height:1.5rem;
+    border-radius: 0.5rem;
+    background-color: rgba(5, 58, 105, 0.417);
+    display: flex;
+    padding: 0px;
+    color: black;
+}
+.song-container img{
+    width: 2rem;
+    margin: 2px;
+   margin-right: 1rem;
+    border-radius: 50%;
+}
+
