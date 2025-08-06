@@ -5,7 +5,7 @@
     font-family: "Mozilla Headline", sans-serif;
 }
 :root{
-    --main-color:rgb(48, 137, 178);
+    --main-color:rgb(24, 168, 236);
 }
 body {
   background-image: url("/assets/background\ image\ 4.jpeg");
@@ -21,8 +21,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.504); /* semi-transparent black */
-
+  background-color: rgba(0, 0, 0, 0.337); 
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -58,14 +57,19 @@ body {
 .image-container{
     margin: 20px;
    box-shadow: 0 0 20px 5px #474760;
+     width: 350px;
+    height: 200px;
+    overflow: hidden;
 }
 .image-container img{
-    width: 350px;
+   width: 100%;
+    height: 100%;
 }
 .progress-bar{
     width: 90%;
     margin-left: 15px;
     height: 4px;
+   
 }
 
 .audio-controls{
@@ -111,5 +115,10 @@ body {
     margin: 2px;
    margin-right: 1rem;
     border-radius: 50%;
+}
+.song-container.active{
+    color: aliceblue;
+     height:1.5rem;
+background-color: #474760bc;
 }
 
