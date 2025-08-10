@@ -18,47 +18,55 @@ body {
     font-family: sans-serif;
 }
 
+/* overlay */
 .overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.337);
+    background-color: rgba(0, 0, 0, 0.484);
     display: flex;
     align-items: flex-start;
     justify-content: center;
 }
 
+/* Header design */
 .heading {
     position: fixed;
-    height: 5rem;
-    background-color: black;
+    height: 4.5rem;
+    background-color: rgba(0, 0, 0, 0.183);
     width: 100vw;
     font-family: "Lobster";
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
-    -webkit-text-stroke: 1px var(--main-color);
-
+    -webkit-text-stroke: 1.5px var(--main-color);
 }
 
+h1 {
+    color: rgb(5, 68, 123);
+    text-shadow: 5px 0px 1px whitesmoke;
+}
 
+/* Main container layout */
 .container {
     background: radial-gradient(circle, #0c4181 10%, #01294f, transparent 96%);
-    max-width: 400px;
-    min-height: 80vh;
+    width: 450px;
+    min-height: 75vh;
     color: aliceblue;
     box-shadow: 0 0 15px 5px #f9f9fb45;
-    margin-top: 100px;
-    padding: 15px;
+    margin-top: 80px;
+    padding: 35px;
+
 }
 
+/* Image styling */
 .image-container {
-    margin: 20px;
+    margin: 10px auto;
     box-shadow: 0 0 20px 5px #474760;
-    width: 320px;
+    width: 380px;
     height: 200px;
     color: #a0c4e5e0;
 }
@@ -68,19 +76,34 @@ body {
     height: 100%;
 }
 
-.progress-bar {
-    width: 90%;
-    height: 4px;
-    margin: 2rem 1rem;
+/* Volume controls design */
+.volume-controls {
+    margin: 35px 0px 0px 2px;
+    font-size: 0.6rem;
+    cursor: pointer;
 }
 
+.volume-controls input {
+    width: 20%;
+    height: 4px;
+    cursor: pointer;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 5px;
+    margin: 0px 10px 30px 0px;
+}
+
+/*  time duration styling */
 .time-update {
     display: flex;
     justify-content: space-between;
     align-items: start;
     background: transparent;
     height: 1.5rem;
-    margin: -30px 30px;
+    margin: -25px 8px 0px 8px;
+    font-size: 0.8rem;
 }
 
 .audio-controls {
@@ -89,7 +112,7 @@ body {
     justify-content: center;
     gap: 2rem;
     width: 100%;
-    margin: -1.4rem auto;
+    margin: -40px 0px -20px 0px;
 }
 
 .audio-controls i {
@@ -100,17 +123,19 @@ body {
     margin-top: 1rem;
 }
 
+/* Audio container layout */
 .song-playlist {
     background: radial-gradient(circle, #01294f, transparent 6%);
     text-align: center;
     box-shadow: 0 0 20px 5px #474760c5;
-    height: 31vh;
+    height: 32vh;
     overflow: scroll;
     scroll-behavior: smooth;
     overflow-x: hidden;
     scrollbar-width: 3px;
-    margin: 1rem;
-    margin-bottom: 0px;
+    margin: 1rem auto;
+    margin-bottom: -10px;
+    cursor: pointer;
 }
 
 .song-playlist h2 {
@@ -141,39 +166,141 @@ body {
     background-color: #474760bc;
 }
 
+
 /* Responsive layout */
-@media(max-width:480px){
+@media(max-width:480px) {
     .heading {
-        height: 3.2rem;
-        font-size: 1.2rem;
-    -webkit-text-stroke: 1px var(--main-color);
-
+        height: 3.1rem;
+        font-size: 1.1rem;
+        margin: 1rem;
+        -webkit-text-stroke: 1px var(--main-color);
     }
-    
+
+    .container {
+        max-width: 350px;
+        width: 450px;
+        min-height: 80vh;
+        margin-top: 80px;
+        padding: 15px;
+    }
+
     .image-container {
-    max-width: 300px;
-    height: 200px;
-    margin: auto;
-}
-.progress-bar {
-    width: 87%;
-    height: 4px;
-    margin:1rem 0rem 1rem 1.3rem;
+        max-width: 300px;
+        height: 200px;
+        margin: 1.5rem auto;
+    }
+
+    .progress-bar {
+        width: 94%;
+        height: 4px;
+        margin: 0rem 0rem 2rem 0.5rem;
+    }
+
+    .volume-controls {
+        margin: 35px 0px 0px 10px;
+    }
+
+    .time-update {
+        margin: -25px 12px 10px 10px;
+    }
+
+    .audio-controls {
+        margin-top: -50px;
+        font-size: 1.2rem;
+    }
+
+    .song-playlist {
+        margin: 0.5rem;
+        margin-top: 1rem;
+    }
 }
 
-.time-update {
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    background: transparent;
-    height: 1rem;
-    margin: -10px 20px;
+@media(max-width:360px) {
+    .container {
+        max-width: 300px;
+    }
+
+    .image-container {
+        max-width: 250px;
+    }
+
+    .volume-controls {
+        margin: 54px 0px 0px 6px;
+    }
+
+    .audio-controls i {
+        font-size: 1rem;
+    }
+
+    .song-playlist {
+        margin: 0.3rem;
+        margin-top: 1rem;
+    }
+
+    .song-container p {
+        font-size: 0.7rem;
+    }
+
+    .progress-bar {
+        width: 98%;
+        margin-left: 0.2rem;
+    }
 }
-.progress-bar{
-    margin-top: 2.2rem;
-}
-.song-playlist{
-    margin-top:2rem;
-}
-  
+
+@media (max-width: 280px) {
+    .heading {
+        margin: 2rem;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 280px;
+        padding: 10px;
+        margin-top: 110px;
+        min-height: 70vh;
+    }
+
+    .image-container {
+        max-width: 100%;
+        height: 140px;
+        margin: 1rem auto;
+    }
+
+    .volume-controls input {
+        width: 15%;
+    }
+
+    .audio-controls {
+        gap: 1rem;
+        margin-top: -40px;
+        margin-bottom: 0.5rem;
+    }
+
+    .audio-controls i {
+        font-size: 1rem;
+    }
+
+    .time-update {
+        font-size: 0.7rem;
+        margin: -10px 8px 5px 8px;
+    }
+
+    .progress-bar {
+        width: 100%;
+        height: 4px;
+        margin: 0 0 15px 0;
+    }
+
+    .song-playlist {
+        height: 26vh;
+        margin: 1rem auto;
+    }
+
+    .song-playlist h2 {
+        font-size: 1rem;
+    }
+
+    .song-container p {
+        font-size: 0.65rem;
+    }
 }

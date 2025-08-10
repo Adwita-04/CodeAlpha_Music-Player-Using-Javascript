@@ -24,12 +24,11 @@ const songs = [
     image: "assets/in your heart cover.jpeg"
   },
   {
-    name: "Warriyo - Mortals [NCS Release]",
+    name: "Warriyo - Mortals",
     file: "assets/Warriyo - Mortals.mp3",
     artist: "Warriyo (ft. Laura Brehm) ",
     image: "assets/warriyo.jpeg"
   },
-
   {
     name: "happy kids background music",
     file: "assets/happy-kids-background-music.mp3",
@@ -41,7 +40,31 @@ const songs = [
     file: "assets/still-waiting-at-the-door.mp3",
     artist: "Anil Bukharia",
     image: "assets/still-waiting-at-the-door.jpg"
-  }
+  },
+  {
+    name: "Cielo",
+    file: "assets/Cielo.mp3",
+    artist: "Huma-Huma",
+    image: "assets/cielo.jpg"
+  },
+  {
+    name: "Invincible",
+    file: "assets/Invincible.mp3",
+    artist: "DEAF KEV",
+    image: "assets/invincible.jpg"
+  },
+  {
+    name: "My Heart",
+    file: "assets/My Heart.mp3",
+    artist: "Different Heaven & EH!DE",
+    image: "assets/my heart.jpg"
+  },
+  {
+    name: "Heroes-Tonight",
+    file: "assets/Heroes-Tonight.mp3",
+    artist: "Janji ft. Johnning",
+    image: "assets/heroes tonight.jpg"
+  },
 ];
 
 // Variables Declaration
@@ -49,7 +72,7 @@ const masterbutton = document.querySelector("#master");
 const prev = document.querySelector("#prev");
 const next = document.querySelector("#next");
 const image = document.querySelector("#songImage");
-const songContainer = document.querySelector(".song-container ");
+const songContainer = document.querySelector(".song-container");
 const songImg = document.querySelector("#song-container-image");
 const progressBar = document.querySelector(".progress-bar");
 const song = document.querySelectorAll(".song-container");
@@ -57,6 +80,8 @@ const currentSong = document.querySelector("#songName");
 const artistName = document.querySelector("#artist");
 const totalDuration = document.querySelector("#total-time");
 const currentDuration = document.querySelector("#current-time");
+const volumeControl = document.querySelector("#volumeSlider");
+const volumeIcon = document.querySelector("#volumeIcon");
 let isPlaying = false;
 let currentIndex = 0;
 
@@ -89,6 +114,17 @@ function songInformation(currentIndex) {
   });
 }
 
+// Next song function 
+function nextSong() {
+  currentIndex = (currentIndex + 1) % songs.length;
+  songInformation(currentIndex);
+  if (isPlaying) {
+    audio.play();
+  }
+  song.forEach(el => el.classList.remove('active'));
+  song[currentIndex].classList.add('active');
+}
+
 // Play/Pause functionality implementation
 masterbutton.addEventListener("click", () => {
   image.src = songs[currentIndex].image;
@@ -110,15 +146,8 @@ masterbutton.addEventListener("click", () => {
 
 // Next/Previous functionality implementation
 next.addEventListener("click", () => {
-  currentIndex = (currentIndex + 1) % songs.length;
-  songInformation(currentIndex);
-  if (isPlaying) {
-    audio.play();
-  }
-  song.forEach(el => el.classList.remove('active'));
-  song[currentIndex].classList.add('active');
+  nextSong();
 });
-
 prev.addEventListener("click", () => {
   currentIndex = (currentIndex - 1 + songs.length) % songs.length;
   songInformation(currentIndex);
@@ -131,8 +160,13 @@ prev.addEventListener("click", () => {
 
 //Update progress bar
 audio.addEventListener('timeupdate', () => {
-  let progress = parseInt((audio.currentTime / audio.duration) * 100);
-  progressBar.value = progress;
+  if (!isNaN(audio.duration)) {
+    progressBar.value = (audio.currentTime / audio.duration) * 100;
+  }
+});
+
+progressBar.addEventListener('input', () => {
+  audio.currentTime = (progressBar.value / 100) * audio.duration;
 });
 
 // Handle song selection from playlist
@@ -149,4 +183,36 @@ song.forEach((element, index) => {
     masterbutton.classList.add("fa-pause");
   });
 });
+
+// Volume handling
+audio.volume = volumeControl.value;
+volumeControl.addEventListener("input", () => {
+  audio.volume = volumeControl.value;
+});
+
+let lastVolume = audio.volume; //  stores last value 
+
+//Mute/unmute toggle on icon click
+volumeIcon.addEventListener("click", () => {
+  if (audio.volume > 0) {
+    lastVolume = audio.volume; // store Current volume 
+    audio.volume = 0;
+    volumeControl.value = 0;
+    volumeIcon.classList.remove("fa-volume-up");
+    volumeIcon.classList.add("fa-volume-mute");
+  } else {
+    audio.volume = lastVolume;
+    volumeIcon.classList.remove("fa-volume-mute");
+    volumeIcon.classList.add("fa-volume-up");
+  }
+});
+// Autoplay logic
+audio.addEventListener("ended", () => {
+  nextSong();
+  isPlaying = true;
+});
+
+
+
+
 
